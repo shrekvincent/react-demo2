@@ -14,21 +14,32 @@ class Test extends Component {
     const loadMoreDataFn = this.loadMoreDataFn;
     const that = this;
     let timeCount;
+    // function callback() {
+    //   const top = wrapper.getBoundingClientRect().top;
+    //   const windowHeight = window.screen.height;
+    //   if (top && top < windowHeight) {
+    //     loadMoreDataFn(that);
+    //   }
+    // }
     function callback() {
-      const top = wrapper.getBoundingClientReact().top;
+      const top = wrapper.getBoundingClientRect().top;
       const windowHeight = window.screen.height;
+  
       if (top && top < windowHeight) {
-        loadMoreDataFn(that);
+          // 当 wrapper 已经被滚动到页面可视范围之内触发
+          loadMoreDataFn(that);
       }
-    }
+  }
     window.addEventListener('scroll', function () {
       if (this.state.isLoadingMore) {
+        console.log('你好啊！')
         return ;
       }
       if (timeCount) {
+        console.log('你好啊！！！')
         clearTimeout(timeCount);
       }
-    }.bind(this), false);
+    }.bind(this), false)
   }
 
 
